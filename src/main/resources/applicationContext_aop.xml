@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!-- Spring Container -->
+
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.chixing.*"></context:component-scan>
+	<aop:aspectj-autoproxy/>
+
+
+
+	<!--
+		1. 切面 aspect: com.chixing.log.LogUtil
+		2. 切点 pointcut :   service(save,delete)
+		3. 增强实现（横切关注点的实现）advice :  addLog
+	 -->
+
+	<!-- 注入LogUtil对象-->
+	<!--<bean id="logUtil" class="com.chixing.log.LogUtil"></bean>
+
+	<aop:config>
+		<aop:aspect id="logAspect" ref="logUtil">
+			<aop:pointcut id="pc" expression="execution(* com.chixing.service..*.save*(..)) || execution(* com.chixing.service..*.delete*(..))"></aop:pointcut>
+			<aop:after method="addLog" pointcut-ref="pc"></aop:after>
+		</aop:aspect>
+	</aop:config>-->
+
+</beans>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.chixing.dao.mybatis.CustomerDao">
+	<resultMap id="customer" type="Customer">
+		<!-- 结果映射：-->
+		<!--主键列 映射 id -->
+		<id column="cust_id" property="custId"></id>
+		<result column="cust_name" property="custName"></result>
+		<result column="cust_pwd" property="custPwd"></result>
+		<result column="cust_gender" property="custGender"></result>
+		<result column="cust_telno" property="custTelno"></result>
+		<result column="cust_birth" property="custBirth"></result>
+
+
+	</resultMap>
+
+
+	<sql id="custColumns">
+		 cust_id,cust_name,cust_pwd, cust_gender,cust_telno,cust_birth
+	</sql>
+
+
+
+	<select id="selectByPrimarykey"  resultMap="customer" parameterType="int" >
+		select
+		<include refid="custColumns" ></include>
+		from customer
+		where cust_id = #{id} and cust_status =0
+	</select>
+
+
+	<!--添加一个新用户-->
+	<insert id="insert"   flushCache="true">
+		insert into customer(cust_name,cust_pwd, cust_telno,cust_regist_time)
+		values(#{custName},#{custPwd},#{custTelno},#{custRegistTime})  <!-- customer.getCustName() -->
+	</insert>
+
+
+	<update id="updateByPrimaryKey"  flushCache="true">
+		update customer
+		<set>
+			<if test="custName !=null">cust_name = #{custName},</if>
+			<if test="custGender !=null">cust_gender = #{custGender},</if>
+			<if test="custBirth !=null">cust_birth = #{custBirth},</if>
+
+			<if test="custCity !=null">cust_city = #{custCity},</if>
+			<if test="others1 !=null">others1 = #{others1}</if>
+		</set>
+		where cust_id = #{custId} and cust_status =0
+	</update>
+
+	<!--根据主键查询用户对象-->
+	<select id="selectAll"  resultMap="customer" parameterType="int" >
+		select
+		<include refid="custColumns" ></include>
+		from customer
+	</select>
+	<delete id="delete" >
+		delete from customer where cust_id = #{id}
+	</delete>
+
+</mapper>

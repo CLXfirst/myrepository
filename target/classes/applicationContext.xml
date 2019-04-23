@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- Spring Container -->
+
+	<!--注入CustomerController对象 -->
+
+	<!--<bean id="customerController" class="com.chixing.controller.CustomerController">-->
+		<!--<constructor-arg ref ="customerServiceImpl"> </constructor-arg>-->
+		<!--<constructor-arg type="int" value="20" index="0"></constructor-arg>-->
+		<!--<constructor-arg type="int" value ="30" index="1"></constructor-arg>-->
+	<!--</bean>-->
+	<!--<bean id="customerController" class="com.chixing.controller.CustomerController">-->
+		<!--<property name="age" value="10" ></property>-->
+		<!--<property name="count" value="20"></property>-->
+		<!--<property name="customerService" ref="customerServiceImpl"></property>-->
+	<!--</bean>-->
+
+
+	<!--注入CustomerServiceImpl对象 -->
+	<!--<bean id="customerServiceImpl"-->
+		  <!--class="com.chixing.service.impl.CustomerServiceImpl"-->
+	      <!--init-method="myinit"-->
+	      <!--destroy-method="mydestory">-->
+	<!--</bean>-->
+
+
+</beans>
